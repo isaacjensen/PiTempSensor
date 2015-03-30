@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+        function update()
+        {
+	    var url;
+	    if ($('#checkbox').prop('checked'))
+		url = '/temp';            
+	    else
+		url = '/temp?s=f';
+
+            $.ajax({
+		url: url,
+		cache: false,
+		success: function(result) {
+                   $('#temp').text(result);
+  		}
+	    })
+        }
+    </script>
+
+    <div> The current temperature is: 
+        <span id= "temp"> </span> 
+    </div>
+    <div>
+        <input type="button" value="Refresh" onclick="update()"/>
+    </div>
+    <div>
+	<input id='checkbox' type="checkbox" value='Celcius' checked >Celsius</input>
+    </div>
+    
+</body>
+</html>
